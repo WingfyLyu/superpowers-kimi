@@ -66,7 +66,7 @@ Each agent gets:
 ### 3. Dispatch in Parallel
 
 ```typescript
-// In Claude Code / AI environment
+// In Kimi Code CLI
 Agent("Fix agent-tool-abort.test.ts failures")
 Agent("Fix batch-completion-behavior.test.ts failures")
 Agent("Fix tool-approval-race-conditions.test.ts failures")
