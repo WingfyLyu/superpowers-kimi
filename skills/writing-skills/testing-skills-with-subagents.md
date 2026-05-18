@@ -12,7 +12,7 @@ You run scenarios without the skill (RED - watch agent fail), write skill addres
 
 **REQUIRED BACKGROUND:** You MUST understand test-driven-development before using this skill. That skill defines the fundamental RED-GREEN-REFACTOR cycle. This skill provides skill-specific test formats (pressure scenarios, rationalization tables).
 
-**Complete worked example:** See examples/CLAUDE_MD_TESTING.md for a full test campaign testing CLAUDE.md documentation variants.
+**Complete worked example:** 参考本 skill 的 RED-GREEN-REFACTOR 示例流程，将相同的测试方法应用于 AGENTS.md 文档变体。
 
 ## When to Use
 

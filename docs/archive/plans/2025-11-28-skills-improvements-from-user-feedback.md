@@ -1,3 +1,9 @@
+> **⚠️ 历史归档**
+> 本文档属于 superpowers 原始多平台支持时期的历史资料，内容针对 OpenCode/Codex/Claude 等平台。
+> 当前仓库已**仅适配 Kimi Code CLI**，本文档中的平台特定指令可能不适用。
+>
+> ---
+
 # Skills Improvements from User Feedback
 
 **Date:** 2025-11-28

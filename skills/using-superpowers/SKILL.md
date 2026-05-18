@@ -31,6 +31,13 @@ If `AGENTS.md` says "don't use TDD" and a skill says "always use TDD," follow th
 
 All tool references in these skills use Kimi Code CLI native tool names.
 
+### Kimi Code CLI 特有功能
+
+- **Skill 斜杠命令**：`/skill:<name>` 手动加载 skill，例如 `/skill:using-superpowers`
+- **Flow Skill**：支持 `/flow:<name>` 执行多步骤自动化工作流（本套 skill 暂未使用）
+- **系统提示词变量**：Kimi 会自动注入 `${KIMI_SKILLS}`（已加载 skill 列表）和 `${KIMI_AGENTS_MD}`（层级合并的 AGENTS.md 内容）
+- **子 Agent 类型**：`coder`（默认，通用开发）、`explore`（只读探索）、`plan`（架构规划）。子 Agent 不能嵌套创建子 Agent。
+
 # Using Skills
 
 ## The Rule

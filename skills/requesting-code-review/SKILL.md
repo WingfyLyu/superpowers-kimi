@@ -31,7 +31,7 @@ HEAD_SHA=$(git rev-parse HEAD)
 
 **2. Dispatch code reviewer subagent:**
 
-使用 Agent 工具，类型为 general-purpose，填写模板 `code-reviewer.md`
+使用 Agent 工具，subagent_type 为 coder（Kimi Code CLI 默认子 Agent 类型，通用软件工程），填写模板 `code-reviewer.md`
 
 **Placeholders:**
 - `{DESCRIPTION}` - Brief summary of what you built

@@ -73,6 +73,8 @@ Agent("Fix tool-approval-race-conditions.test.ts failures")
 // All three run concurrently
 ```
 
+> **实际调用格式：** Kimi Code CLI 中使用 `Agent` 工具，参数为 `description`（简短描述）和 `prompt`（详细指令），`subagent_type` 可选 `coder`/`explore`/`plan`。
+
 ### 4. Review and Integrate
 
 When agents return:

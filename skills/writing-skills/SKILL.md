@@ -17,11 +17,11 @@ You write test cases (pressure scenarios with subagents), watch them fail (basel
 
 **REQUIRED BACKGROUND:** You MUST understand test-driven-development before using this skill. That skill defines the fundamental RED-GREEN-REFACTOR cycle. This skill adapts TDD to documentation.
 
-**Official guidance:** For Anthropic's official skill authoring best practices, see anthropic-best-practices.md. This document provides additional patterns and guidelines that complement the TDD-focused approach in this skill.
+**Official guidance:** 参见 Kimi Code CLI 内置的 `skill-creator` skill 获取官方创建指南。本 skill 的 TDD 方法是对官方指南的补充。
 
 ## What is a Skill?
 
-A **skill** is a reference guide for proven techniques, patterns, or tools. Skills help future Claude instances find and apply effective approaches.
+A **skill** is a reference guide for proven techniques, patterns, or tools. Skills help future Agent instances find and apply effective approaches.
 
 **Skills are:** Reusable techniques, patterns, tools, reference guides
 
@@ -55,7 +55,7 @@ The entire skill creation process follows RED-GREEN-REFACTOR.
 **Don't create for:**
 - One-off solutions
 - Standard practices well-documented elsewhere
-- Project-specific conventions (put in CLAUDE.md)
+- Project-specific conventions (put in AGENTS.md)
 - Mechanical constraints (if it's enforceable with regex/validation, automate it—save documentation for judgment calls)
 
 ## Skill Types
@@ -93,13 +93,13 @@ skills/
 ## SKILL.md Structure
 
 **Frontmatter (YAML):**
-- Two required fields: `name` and `description` (see [agentskills.io/specification](https://agentskills.io/specification) for all supported fields)
+- Two required fields: `name` and `description` (see [agentskills.io/specification](https://agentskills.io/specification) for all supported fields; Kimi Code CLI 的 Skill 格式与此兼容，详见 [Kimi Skill 文档](https://www.kimi.com/code/docs/kimi-code-cli/customization/skills.html))
 - Max 1024 characters total
 - `name`: Use letters, numbers, and hyphens only (no parentheses, special chars)
 - `description`: Third-person, describes ONLY when to use (NOT what it does)
   - Start with "Use when..." to focus on triggering conditions
   - Include specific symptoms, situations, and contexts
-  - **NEVER summarize the skill's process or workflow** (see CSO section for why)
+  - **NEVER summarize the skill's process or workflow** (see SSO section for why)
   - Keep under 500 characters if possible
 
 ```markdown
@@ -137,13 +137,13 @@ Concrete results
 ```
 
 
-## Claude Search Optimization (CSO)
+## Skill Search Optimization (SSO)
 
-**Critical for discovery:** Future Claude needs to FIND your skill
+**Critical for discovery:** Future Agent needs to FIND your skill
 
 ### 1. Rich Description Field
 
-**Purpose:** Claude reads description to decide which skills to load for a given task. Make it answer: "Should I read this skill right now?"
+**Purpose:** Agent reads description to decide which skills to load for a given task. Make it answer: "Should I read this skill right now?"
 
 **Format:** Start with "Use when..." to focus on triggering conditions
 
@@ -151,14 +151,14 @@ Concrete results
 
 The description should ONLY describe triggering conditions. Do NOT summarize the skill's process or workflow in the description.
 
-**Why this matters:** Testing revealed that when a description summarizes the skill's workflow, Claude may follow the description instead of reading the full skill content. A description saying "code review between tasks" caused Claude to do ONE review, even though the skill's flowchart clearly showed TWO reviews (spec compliance then code quality).
+**Why this matters:** Testing revealed that when a description summarizes the skill's workflow, Agent may follow the description instead of reading the full skill content. A description saying "code review between tasks" caused Agent to do ONE review, even though the skill's flowchart clearly showed TWO reviews (spec compliance then code quality).
 
-When the description was changed to just "Use when executing implementation plans with independent tasks" (no workflow summary), Claude correctly read the flowchart and followed the two-stage review process.
+When the description was changed to just "Use when executing implementation plans with independent tasks" (no workflow summary), Agent correctly read the flowchart and followed the two-stage review process.
 
-**The trap:** Descriptions that summarize workflow create a shortcut Claude will take. The skill body becomes documentation Claude skips.
+**The trap:** Descriptions that summarize workflow create a shortcut Agent will take. The skill body becomes documentation Claude skips.
 
 ```yaml
-# ❌ BAD: Summarizes workflow - Claude may follow this instead of reading skill
+# ❌ BAD: Summarizes workflow - Agent may follow this instead of reading skill
 description: Use when executing plans - dispatches subagent per task with code review between tasks
 
 # ❌ BAD: Too much process detail
@@ -198,7 +198,7 @@ description: Use when using React Router and handling authentication redirects
 
 ### 2. Keyword Coverage
 
-Use words Claude would search for:
+Use words Agent would search for:
 - Error messages: "Hook timed out", "ENOTEMPTY", "race condition"
 - Symptoms: "flaky", "hanging", "zombie", "pollution"
 - Synonyms: "timeout/hang/freeze", "cleanup/teardown/afterEach"
@@ -313,13 +313,7 @@ digraph when_flowchart {
 - Linear instructions → Numbered lists
 - Labels without semantic meaning (step1, helper2)
 
-See @graphviz-conventions.dot for graphviz style rules.
-
-**Visualizing for your human partner:** Use `render-graphs.js` in this directory to render a skill's flowcharts to SVG:
-```bash
-./render-graphs.js ../some-skill           # Each diagram separately
-./render-graphs.js ../some-skill --combine # All diagrams in one SVG
-```
+**Visualizing for your human partner:** Kimi Code CLI 的 Agent 可以直接渲染 Graphviz dot 代码为文本描述。将 dot 流程图直接嵌入 SKILL.md 即可，无需外部渲染脚本。
 
 ## Code Examples
 
@@ -522,7 +516,7 @@ Make it easy for agents to self-check when rationalizing:
 **All of these mean: Delete code. Start over with TDD.**
 ```
 
-### Update CSO for Violation Symptoms
+### Update SSO for Violation Symptoms
 
 Add to description: symptoms of when you're ABOUT to violate the rule:
 
@@ -604,7 +598,7 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 
 **GREEN Phase - Write Minimal Skill:**
 - [ ] Name uses only letters, numbers, hyphens (no parentheses/special chars)
-- [ ] YAML frontmatter with required `name` and `description` fields (max 1024 chars; see [spec](https://agentskills.io/specification))
+- [ ] YAML frontmatter with required `name` and `description` fields (max 1024 chars; see [spec](https://agentskills.io/specification) 或 [Kimi Skill 文档](https://www.kimi.com/code/docs/kimi-code-cli/customization/skills.html))
 - [ ] Description starts with "Use when..." and includes specific triggers/symptoms
 - [ ] Description written in third person
 - [ ] Keywords throughout for search (errors, symptoms, tools)
@@ -634,7 +628,7 @@ Deploying untested skills = deploying untested code. It's a violation of quality
 
 ## Discovery Workflow
 
-How future Claude finds your skill:
+How future Agent finds your skill:
 
 1. **Encounters problem** ("tests are flaky")
 3. **Finds SKILL** (description matches)

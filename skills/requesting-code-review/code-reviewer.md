@@ -5,7 +5,7 @@ Use this template when dispatching a code reviewer subagent.
 **Purpose:** Review completed work against requirements and code quality standards before it cascades into more work.
 
 ```
-Agent 工具（general-purpose）：
+Agent 工具（subagent_type: coder）：
   description: "Review code changes"
   prompt: |
     You are a Senior Code Reviewer with expertise in software architecture,

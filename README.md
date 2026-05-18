@@ -30,7 +30,7 @@ Superpowers 是一套完整的 AI 辅助软件开发方法论，通过可组合�
 ## 安装
 
 ### 前提
-- 已安装 [Kimi Code CLI](https://www.example.com/kimi-cli)（替换为实际地址）
+- 已安装 [Kimi Code CLI](https://www.kimi.com/code)
 - Git 与 SSH 已配置
 
 ### 一键安装
