@@ -27,7 +27,7 @@ If `AGENTS.md` says "don't use TDD" and a skill says "always use TDD," follow th
 
 ## How to Access Skills
 
-**In Kimi Code CLI:** Skills are automatically discovered from `~/.kimi/skills/` or `~/.config/agents/skills/`. When a skill's name and description match your current task, you MUST read its `SKILL.md` and follow it directly. You can also manually trigger a skill with `/skill:<name>`.
+**In Kimi Code CLI:** Skills are automatically discovered from `~/.kimi/skills/`（品牌组）或 `~/.config/agents/skills/`（通用组，Kimi 官方推荐）。 When a skill's name and description match your current task, you MUST read its `SKILL.md` and follow it directly. You can also manually trigger a skill with `/skill:<name>`.
 
 All tool references in these skills use Kimi Code CLI native tool names.
 

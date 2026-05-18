@@ -9,7 +9,7 @@ description: Use when creating new skills, editing existing skills, or verifying
 
 **Writing skills IS Test-Driven Development applied to process documentation.**
 
-**Personal skills live in agent-specific directories (`~/.kimi/skills/` for Kimi Code CLI, `~/.config/agents/skills/` for generic agents)** 
+**Personal skills live in agent-specific directories (`~/.kimi/skills/` for Kimi Code CLI, `~/.config/agents/skills/` for Kimi 及通用 agents)** 
 
 You write test cases (pressure scenarios with subagents), watch them fail (baseline behavior), write the skill (documentation), watch tests pass (agents comply), and refactor (close loopholes).
 
@@ -155,7 +155,7 @@ The description should ONLY describe triggering conditions. Do NOT summarize the
 
 When the description was changed to just "Use when executing implementation plans with independent tasks" (no workflow summary), Agent correctly read the flowchart and followed the two-stage review process.
 
-**The trap:** Descriptions that summarize workflow create a shortcut Agent will take. The skill body becomes documentation Claude skips.
+**The trap:** Descriptions that summarize workflow create a shortcut Agent will take. The skill body becomes documentation Agent skips.
 
 ```yaml
 # ❌ BAD: Summarizes workflow - Agent may follow this instead of reading skill
